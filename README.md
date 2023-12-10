@@ -1,4 +1,4 @@
-# React + Vite
+# Assessment 2
 
 Visit this site at https://elchemy2.vercel.app/<br/>
 if there are some issues with the vercel deployment please check the netlify deployment at https://elchemy2.netlify.app/<br/>
