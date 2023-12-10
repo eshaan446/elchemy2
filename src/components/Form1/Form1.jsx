@@ -209,9 +209,6 @@ const Form1 = () => {
                 onChange={(e)=>setFormData({...formData,email:e.target.value})}
                 required
               />
-              <small className="form-text text-muted">
-                We'll never share your email with anyone else.
-              </small>
             </div>
             <div className="form-group">
               <label>Work Email:(Optional)</label>
