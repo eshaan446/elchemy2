@@ -29,12 +29,10 @@ const Form2 = () => {
     // validation enable the Preview button
     const isComplete =
       form2Data.techskills !== "" &&
-      form2Data.verbal !== "" &&
       form2Data.experience !== "" &&
-      form2Data.education !== "" &&
-      form2Data.github !== "" && 
-      validateGitHub(form2Data.github);
-     setIsFormComplete(isComplete);
+      form2Data.education !== "" && (form2Data.github===""?true:validateGitHub(form2Data.github))
+
+      setIsFormComplete(isComplete);
   }, [form2Data]);
   const formdata1=location.state;
   //form1 seed data to handle errors
@@ -135,7 +133,7 @@ const Form2 = () => {
               />
             </div>
             <div className="form-group">
-              <label>Verbal Languages Spoken:</label>
+              <label>Verbal Languages Spoken: (Optional)</label>
               <input
                 type="text"
                 className="form-control"
@@ -156,7 +154,7 @@ const Form2 = () => {
                 onChange={(e)=>setForm2Data({...form2Data,education:e.target.value})} required></textarea>
             </div>
             <div className="form-group">
-              <label>Github Link:</label>
+              <label>Github Link: (Optional)</label>
               <input
                 type="text"
                 className="form-control"
@@ -166,10 +164,10 @@ const Form2 = () => {
               />
             </div>
             <div className="buttons">
-            <button onClick={goBack} className="btn btn-primary">
+            <button onClick={goBack} type="button" className="btn btn-primary">
               Go Back
             </button>
-            <button onClick={handleReset} className="btn btn-danger">
+            <button onClick={handleReset} type="button" className="btn btn-danger">
               Reset
             </button>
             <button disabled={!isFormComplete} type="submit" className="btn btn-success">

@@ -141,7 +141,7 @@ const Form1 = () => {
               />
             </div>
             <div className="form-group">
-              <label>Middle Name:</label>
+              <label>Middle Name:(Optional)</label>
               <input
                 type="text"
                 className="form-control"
@@ -195,6 +195,9 @@ const Form1 = () => {
                 onChange={(e)=>setFormData({...formData,phoneNumber:parseInt(e.target.value)})}
                 required
               />
+               <small className="form-text text-muted">
+                Phone number should be of exactly 10 digits.
+              </small>
             </div>
             <div className="form-group">
               <label>Email address:</label>
@@ -211,7 +214,7 @@ const Form1 = () => {
               </small>
             </div>
             <div className="form-group">
-              <label>Work Email:</label>
+              <label>Work Email:(Optional)</label>
               <input
                 type="email"
                 className="form-control"
@@ -221,13 +224,13 @@ const Form1 = () => {
               />
             </div>
             <div className="form-group">
-              <label>Address 1:</label>
+              <label>Address line 1:</label>
               <br />
               <textarea placeholder="Enter your Address 1" value={formData.addressLine1}
                 onChange={(e)=>setFormData({...formData,addressLine1:e.target.value})} required></textarea>
             </div>
             <div className="form-group">
-              <label>Address 2:</label>
+              <label>Address line 2:(Optional)</label>
               <br />
               <textarea placeholder="Enter your Address 2" value={formData.addressLine2}
                 onChange={(e)=>setFormData({...formData,addressLine2:e.target.value})}></textarea>
@@ -256,7 +259,7 @@ const Form1 = () => {
              
             </div>
             <div className="form-group">
-              <label>State:</label>
+              <label>State: (Optional)</label>
               <input
                 type="text"
                 className="form-control"
@@ -308,9 +311,12 @@ const Form1 = () => {
                 onChange={(e)=>setFormData({...formData,pinCode:parseInt(e.target.value)})}
                 required
               />
+              <small className="form-text text-muted">
+                Pincode should be of exactly 6 digits.
+              </small>
             </div>
             <div className="buttons">
-            <button onClick={handleReset} className="btn btn-danger">
+            <button type="button" onClick={handleReset} className="btn btn-danger">
               Reset
             </button>
             <button type="submit" disabled={!isFormComplete} className="btn btn-success">
