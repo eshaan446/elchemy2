@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import './Preview.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +29,7 @@ const Preview = () => {
     <>
        <ToastContainer/>
       <h1 className="heading">Preview</h1>
-      <h2>Form 1 data:</h2>
+      <h2>Form 1 data:</h2> 
       <div className="flexCenter innerWidth">
       
       <table className="tableStyle">
@@ -38,7 +38,7 @@ const Preview = () => {
             <th>Field Name</th>
             <th>Field Type</th>
             <th>Required?</th>
-            <th className>Data from Form 1</th>
+            <th>Data from Form 1</th>
           </tr>
         </thead>
         <tbody>
@@ -129,7 +129,7 @@ const Preview = () => {
         </tbody>
       </table>
       </div>
-      <h2>Form 2 data:</h2>
+      <h2>Form 2 data:</h2> 
       <div className="flexCenter innerWidth">
       <table className="tableStyle">
         <thead>

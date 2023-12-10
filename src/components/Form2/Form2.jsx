@@ -9,12 +9,16 @@ import 'react-toastify/dist/ReactToastify.css';
 const Form2 = () => {
   const navigate=useNavigate();
   const location=useLocation();
-  const [form2Data, setForm2Data] = useState({
-    techskills: "",
-    verbal: "",
-    experience: "",
-    education: "",
-    github: "",
+  const [form2Data, setForm2Data] = useState(()=>{
+    const storedData=localStorage.getItem("form2Data");
+    if(storedData) console.log("form 2 cache hit")
+    return storedData? JSON.parse(storedData):{
+      techskills: "",
+      verbal: "",
+      experience: "",
+      education: "",
+      github: "",
+    }
   });
   const [isFormComplete, setIsFormComplete] = useState(false);
   let showToast=true
@@ -26,6 +30,7 @@ const Form2 = () => {
   },[showToast])
 
   useEffect(() => {
+    localStorage.setItem("form2Data", JSON.stringify(form2Data));
     // validation enable the Preview button
     const isComplete =
       form2Data.techskills !== "" &&
@@ -73,6 +78,7 @@ const Form2 = () => {
     });
   }
   function handleReset(){
+    localStorage.removeItem('form2Data')
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

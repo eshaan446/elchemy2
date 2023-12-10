@@ -9,21 +9,25 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Form1 = () => {
   const navigate=useNavigate();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    age: "",
-    gender: "",
-    phoneNumber: '',
-    email: "",
-    workEmail: "",
-    addressLine1: "",
-    addressLine2: "",
-    city: "",
-    state: "",
-    country: "",
-    pinCode: '',
+  const [formData, setFormData] = useState(()=>{
+    const storedData=localStorage.getItem('formData');
+    if(storedData) console.log(" form 1 cache hit")  // empty localstorage at reset
+    return storedData ? JSON.parse(storedData):{
+      firstName: "",
+      middleName: "",
+      lastName: "",
+      age: "",
+      gender: "",
+      phoneNumber: '',
+      email: "",
+      workEmail: "",
+      addressLine1: "",
+      addressLine2: "",
+      city: "",
+      state: "",
+      country: "",
+      pinCode: '',
+    }
   });
 
   const [citySuggestions,setCitysuggestions]=useState(cities)
@@ -51,6 +55,7 @@ const Form1 = () => {
       }
     }
     document.addEventListener('click',handleDClick)
+    localStorage.setItem('formData',JSON.stringify(formData))
     const isComplete =
       formData.phoneNumber.toString().length === 10 &&
       formData.pinCode.toString().length===6
@@ -90,6 +95,7 @@ const Form1 = () => {
     setShowCountry(false);
   }
   function handleReset(){
+    localStorage.removeItem('form2Data')
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
