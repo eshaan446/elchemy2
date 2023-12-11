@@ -78,7 +78,6 @@ const Form2 = () => {
     });
   }
   function handleReset(){
-    localStorage.removeItem('form2Data')
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -89,6 +88,7 @@ const Form2 = () => {
       confirmButtonText: "Yes, reset it!"
     }).then((result) => {
       if (result.isConfirmed) {
+        localStorage.removeItem('form2Data')
         setForm2Data({
           techskills: "",
           verbal: "",

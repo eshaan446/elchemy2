@@ -95,7 +95,7 @@ const Form1 = () => {
     setShowCountry(false);
   }
   function handleReset(){
-    localStorage.removeItem('form2Data')
+    
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -106,6 +106,8 @@ const Form1 = () => {
       confirmButtonText: "Yes, reset it!"
     }).then((result) => {
       if (result.isConfirmed) {
+
+        localStorage.removeItem('formData')
         setFormData({
           firstName: "",
           middleName: "",
