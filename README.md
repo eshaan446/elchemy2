@@ -1,6 +1,7 @@
-# React + Vite
+# Assessment 2
 
-Visit this site at https://elchemy2.vercel.app/
+Visit this site at https://elchemy2.vercel.app/<br/>
+if there are some issues with the vercel deployment please check the netlify deployment at https://elchemy2.netlify.app/<br/>
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
