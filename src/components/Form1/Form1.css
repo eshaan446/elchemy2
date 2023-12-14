@@ -50,6 +50,7 @@
   .cont{
     border: 1px solid black;
     padding: 2rem;
+    
   }
   .heading{
     text-align: center;
@@ -80,5 +81,7 @@
     background-color: orange;
     color: white;
   }
+  
+  
   
   

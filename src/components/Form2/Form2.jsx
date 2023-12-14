@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Form2 = () => {
+  //const rgex=/^(https?:\/\/)?(github\.com\/S+)$/
   const navigate=useNavigate();
   const location=useLocation();
   const [form2Data, setForm2Data] = useState(()=>{
@@ -31,8 +32,8 @@ const Form2 = () => {
 
   useEffect(() => {
     localStorage.setItem("form2Data", JSON.stringify(form2Data));
-    // validation enable the Preview button
-    const isComplete =
+    // validation to enable the Preview button
+    const isComplete = //any validation to be added in form 2 shall come here
       form2Data.techskills !== "" &&
       form2Data.experience !== "" &&
       form2Data.education !== "" && (form2Data.github===""?true:validateGitHub(form2Data.github))
@@ -102,6 +103,7 @@ const Form2 = () => {
   }
   function validateGitHub(link) {
     const regex = /^(https?:\/\/)?(www\.)?github\.com\/\S+$/;
+    //const rgex=/^(https?:\/\/)?(github\.com)\/\S+$/
     return regex.test(link);
   }
   function goBack(){
@@ -168,6 +170,8 @@ const Form2 = () => {
                 value={form2Data.github}
                 onChange={(e)=>setForm2Data({...form2Data,github:e.target.value})}
               />
+              {/* Github Validation logic */}
+              {form2Data.github && !validateGitHub(form2Data.github) && <span className="text-muted">Please add a valid github link</span>}
             </div>
             <div className="buttons">
             <button onClick={goBack} type="button" className="btn btn-primary">

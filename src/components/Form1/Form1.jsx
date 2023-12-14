@@ -37,6 +37,7 @@ const Form1 = () => {
   const [countrySuggestions,setCountrysuggestions]=useState(countries)
   const [showCountry,setShowCountry]=useState(false);
   const [isFormComplete, setIsFormComplete] = useState(false);
+  const [pinCodeTouched,setpinCodeTouched]=useState(false);
   let showToast=true;
   useEffect(()=>{
     if(showToast){
@@ -56,10 +57,10 @@ const Form1 = () => {
     }
     document.addEventListener('click',handleDClick)
     localStorage.setItem('formData',JSON.stringify(formData))
-    const isComplete =
-      formData.phoneNumber.toString().length === 10 &&
+    if(formData.phoneNumber && formData.pinCode){
+      const isComplete =formData.phoneNumber.toString().length === 10 &&
       formData.pinCode.toString().length===6
-     setIsFormComplete(isComplete);
+     setIsFormComplete(isComplete);}
     return ()=>{
       document.removeEventListener('click',handleDClick)
     }
@@ -203,7 +204,7 @@ const Form1 = () => {
                 onChange={(e)=>setFormData({...formData,phoneNumber:parseInt(e.target.value)})}
                 required
               />
-               <small className="form-text text-muted">
+               <small style={{visibility: formData.phoneNumber && formData.phoneNumber.toString().length===10?"hidden":"visible"}} className="form-text text-muted">
                 Phone number should be of exactly 10 digits.
               </small>
             </div>
@@ -313,10 +314,10 @@ const Form1 = () => {
                 className="form-control"
                 placeholder="Enter your pincode"
                 value={formData.pinCode}
-                onChange={(e)=>setFormData({...formData,pinCode:parseInt(e.target.value)})}
+                onChange={(e)=>{setFormData({...formData,pinCode:parseInt(e.target.value)});setpinCodeTouched(true);}}
                 required
               />
-              <small className="form-text text-muted">
+              <small style={{visibility:pinCodeTouched && formData.pinCode && formData.pinCode.toString().length!==6?"visible":'hidden'}} className="form-text text-muted">
                 Pincode should be of exactly 6 digits.
               </small>
             </div>
